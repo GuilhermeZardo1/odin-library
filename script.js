@@ -10,8 +10,6 @@ function Book(title, author, pages, read) {
   this.read=read;
 }
 
-///const book1 = new Book("jeopard", "mark davis", 1134, true)
-//console.log(book1);
 
 let book2;
 
@@ -37,15 +35,11 @@ function toggleReadWrap(book){
 
 
 
-/*for (let i = 0; i < 7; i++) {
-    addBookToLibrary();
-}*/
-
 function displayBook(book){
 
   let title = document.createElement("div");
   title.className = "title"
-  title.textContent= "title";
+  title.textContent= book.title;
   let author = document.createElement("div");
   author.className = "author"
   author.textContent= book.author;
@@ -62,7 +56,6 @@ function displayBook(book){
   removeButton.addEventListener("click", function(event) {
 
     delete myLibrary[myLibrary.indexOf(book)];
-    //myLibrary=myLibrary.splice(myLibrary.indexOf(book),myLibrary.indexOf(book));
     displayLibrary();
      
   });
@@ -89,35 +82,42 @@ function displayForm(){
   let form = document.createElement("form");
   let labelTitle = document.createElement("label");
   labelTitle.htmlFor = "title";
-  labelTitle.textContent= "title:";
+  labelTitle.textContent= "Title:";
   let titleInput = document.createElement("input");
   titleInput.type = "text";
   titleInput.name = "title";
   titleInput.placeholder = "Title";
   let labelAuthor = document.createElement("label");
   labelAuthor.htmlFor = "author";
-  labelAuthor.textContent= "author:";
+  labelAuthor.textContent= "Author:";
   let authorInput = document.createElement("input");
   authorInput.type = "text";
   authorInput.name = "author";
   authorInput.placeholder = "Author";
   let labelPages = document.createElement("label");
   labelPages.htmlFor = "pages";
-  labelPages.textContent= "pages:";
+  labelPages.textContent= "Pages:";
   let pagesInput = document.createElement("input");
   pagesInput.type = "number";
-  pagesInput.name = "pages";
-  pagesInput.placeholder = "pages";
+  pagesInput.name = "Pages";
+  pagesInput.placeholder = "Pages";
+  pagesInput.className="pages";
   let labelRead = document.createElement("label");
   labelRead.htmlFor = "read";
-  labelRead.textContent= "read:";
+  labelRead.textContent= "Read:";
   let readInput = document.createElement("input");
   readInput.type = "text";
   readInput.name = "read";
-  readInput.placeholder = "read";
+  readInput.className="read";
+  readInput.placeholder = "Read";
   let submitButton = document.createElement("button");
   submitButton.type = "submit";
-  submitButton.textContent = "Submit";
+  submitButton.textContent = "Add Book";
+  let divAdd = document.createElement("div");
+  divAdd.className="add";
+  divAdd.appendChild(submitButton);
+  let divForm = document.createElement("div");
+  divForm.className="divForm";
   
   form.appendChild(labelTitle);
   form.appendChild(titleInput);
@@ -127,11 +127,12 @@ function displayForm(){
   form.appendChild(pagesInput);
   form.appendChild(labelRead);
   form.appendChild(readInput);
-  form.appendChild(submitButton);
-  display2.appendChild(form);
+  divForm.appendChild(form);
+  display2.appendChild(divForm);
+  display2.appendChild(divAdd);
 
   form.addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent actual form submission for this example
+    event.preventDefault(); 
     let title = titleInput.value;
     let author = authorInput.value;
     let pages = parseInt(pagesInput.value);
