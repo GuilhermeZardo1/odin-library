@@ -2,6 +2,7 @@ let myLibrary = [];
 
 let display1 = document.getElementById("display1");
 let display2 = document.getElementById("display2");
+let allcontent = document.getElementById("allcontent");
 
 function Book(title, author, pages, read) {
   this.title= title;
@@ -37,22 +38,26 @@ function toggleReadWrap(book){
 
 function displayBook(book){
 
+  let card=document.createElement("div");
+  card.className="card";
+
   let title = document.createElement("div");
-  title.className = "title"
-  title.textContent= book.title;
+  title.className = "title";
+  title.textContent= "Title:  " + book.title;
   let author = document.createElement("div");
   author.className = "author"
-  author.textContent= book.author;
+  author.textContent= "Author:  " + book.author;
   let pages = document.createElement("div");
-  pages.className = "pages"
-  pages.textContent= book.pages;
+  pages.className = "pages";
+  pages.textContent= "pages:  " + book.pages;
   let read = document.createElement("div");
-  read.className = "read"
-  read.textContent= book.read;
+  read.className = "read";
+  read.textContent= "Read?  " + book.read;
   let blankLine = document.createElement("div");
   blankLine.className = "blankLine";
   let removeButton = document.createElement("button");
-  removeButton.textContent = "Remove Book";
+  removeButton.textContent = "Remove";
+  removeButton.className="remove";
   removeButton.addEventListener("click", function(event) {
 
     delete myLibrary[myLibrary.indexOf(book)];
@@ -60,18 +65,21 @@ function displayBook(book){
      
   });
   let toggleButton = document.createElement("button");
-  toggleButton.textContent = "Toggle Read";
+  toggleButton.textContent = "Read?";
+  toggleButton.className="toggle";
   toggleButton.addEventListener("click", function(event){
     toggleReadWrap(book);
   });
 
-  display1.appendChild(title);
-  display1.appendChild(author);
-  display1.appendChild(pages);
-  display1.appendChild(read);
-  display1.appendChild(blankLine);
-  display1.appendChild(removeButton);
-  display1.appendChild(toggleButton);
+  card.appendChild(title);
+  card.appendChild(author);
+  card.appendChild(pages);
+  card.appendChild(read);
+  card.appendChild(blankLine);
+  card.appendChild(removeButton);
+  card.appendChild(toggleButton);
+  display1.appendChild(card); 
+  
 
   
 
@@ -80,6 +88,7 @@ function displayBook(book){
 function displayForm(){
 
   let form = document.createElement("form");
+  form.setAttribute("id", "form1");
   let labelTitle = document.createElement("label");
   labelTitle.htmlFor = "title";
   labelTitle.textContent= "Title:";
@@ -100,7 +109,7 @@ function displayForm(){
   let pagesInput = document.createElement("input");
   pagesInput.type = "number";
   pagesInput.name = "Pages";
-  pagesInput.placeholder = "Pages";
+  pagesInput.placeholder = "Nº.";
   pagesInput.className="pages";
   let labelRead = document.createElement("label");
   labelRead.htmlFor = "read";
@@ -109,10 +118,11 @@ function displayForm(){
   readInput.type = "text";
   readInput.name = "read";
   readInput.className="read";
-  readInput.placeholder = "Read";
+  readInput.placeholder = "True or False";
   let submitButton = document.createElement("button");
   submitButton.type = "submit";
   submitButton.textContent = "Add Book";
+  submitButton.setAttribute("form", "form1");
   let divAdd = document.createElement("div");
   divAdd.className="add";
   divAdd.appendChild(submitButton);
