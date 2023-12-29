@@ -4,11 +4,13 @@ let display1 = document.getElementById("display1");
 let display2 = document.getElementById("display2");
 let allcontent = document.getElementById("allcontent");
 
-function Book(title, author, pages, read) {
-  this.title= title;
-  this.author=author;
-  this.pages= pages;
-  this.read=read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 
