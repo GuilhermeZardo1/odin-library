@@ -94,10 +94,12 @@ function displayForm(){
   let labelTitle = document.createElement("label");
   labelTitle.htmlFor = "title";
   labelTitle.textContent= "Title:";
+ 
   let titleInput = document.createElement("input");
   titleInput.type = "text";
   titleInput.name = "title";
   titleInput.placeholder = "Title";
+  titleInput.required = true;
   let labelAuthor = document.createElement("label");
   labelAuthor.htmlFor = "author";
   labelAuthor.textContent= "Author:";
@@ -105,6 +107,7 @@ function displayForm(){
   authorInput.type = "text";
   authorInput.name = "author";
   authorInput.placeholder = "Author";
+  authorInput.required = true;
   let labelPages = document.createElement("label");
   labelPages.htmlFor = "pages";
   labelPages.textContent= "Pages:";
@@ -113,6 +116,7 @@ function displayForm(){
   pagesInput.name = "Pages";
   pagesInput.placeholder = "Nº.";
   pagesInput.className="pages";
+  pagesInput.required = true;
   let labelRead = document.createElement("label");
   labelRead.htmlFor = "read";
   labelRead.textContent= "Read:";
@@ -121,6 +125,7 @@ function displayForm(){
   readInput.name = "read";
   readInput.className="read";
   readInput.placeholder = "True or False";
+  readInput.required = true;
   let submitButton = document.createElement("button");
   submitButton.type = "submit";
   submitButton.textContent = "Add Book";
